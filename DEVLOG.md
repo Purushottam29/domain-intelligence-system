@@ -159,7 +159,7 @@ Sample output:
   "churn_probability": 0.9834,
   "risk": "high"
 }
-
+```
 ### 3) RAG Document Setup
 Added telecom related policy PDFs:
 - CustomerServicePolicy.pdf
