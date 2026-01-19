@@ -210,3 +210,85 @@ Retrieved relevant chunks from:
 - Combine ML + RAG (churn prediction + retention action recommendation from policy docs)
 - FastAPI endpoints: /predict, /upload-docs, /ask
 
+
+## Day 4 — ML + RAG Integration (Churn → Retention Recommendation)
+
+### ✅ Goal
+Combine both subsystems:
+- ML predicts churn probability + risk level
+- RAG retrieves retention actions from policy documents
+- Output becomes business-usable: **risk + action plan + citations**
+
+---
+
+### Work Done
+
+#### 1) Built integration module: `rag/recommend.py`
+Created a new script that connects:
+- `models/churn_model.joblib` (ML pipeline)
+- FAISS vector index (`rag/index/docs.index`)
+- metadata store (`rag/index/docs_meta.pkl`)
+
+Flow:
+1. Load churn model using joblib
+2. Predict churn probability and classify risk (low/medium/high)
+3. Create a RAG query based on risk
+4. Retrieve relevant chunks from FAISS
+5. Return policy-grounded actions + citations
+
+---
+
+#### 2) Improved RAG Retrieval Quality
+Initially, retrieval returned definition sections (risk meaning).
+So improved the retrieval query to include action keywords:
+- `RET10`
+- `discount`
+- `plan upgrade`
+- `premium support`
+- `escalation timeline`
+
+Also filtered results strictly to:
+- `RetentionPolicy.pdf`
+so the system consistently pulls retention actions rather than unrelated policy chunks.
+
+---
+
+#### 3) Added Action Chunk Selection Logic
+Added keyword-based filtering over retrieved chunks to select the chunk most likely containing actual action steps.
+
+Keywords used:
+- `Offer`, `RET10`, `discount`, `Premium Support`, `Plan Upgrade`, `Escalation`, `within`
+
+This improved output relevance significantly.
+
+---
+
+### Output Example
+For a sample customer:
+- churn_probability ≈ 0.9834
+- risk = high
+
+RAG successfully retrieved policy section:
+- high-risk actions (RET10 discount, plan upgrade, premium support, contract lock-in)
+and returned citations.
+
+---
+
+### Key Learnings
+- Retrieval quality depends heavily on query wording
+- Filtering docs by source improves reliability
+- Combining ML + RAG is the core “enterprise feature”
+  (prediction + explainable policy action plan)
+
+---
+
+### Next Steps
+- Convert recommendation output into structured response:
+  - bullet list actions
+  - eligibility rules
+  - clean citations
+- Wrap everything in FastAPI:
+  - `/predict`
+  - `/ask`
+  - `/recommend`
+
