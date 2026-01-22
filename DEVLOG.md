@@ -213,7 +213,7 @@ Retrieved relevant chunks from:
 
 ## Day 4 — ML + RAG Integration (Churn → Retention Recommendation)
 
-### ✅ Goal
+### Goal
 Combine both subsystems:
 - ML predicts churn probability + risk level
 - RAG retrieves retention actions from policy documents
@@ -291,4 +291,45 @@ and returned citations.
   - `/predict`
   - `/ask`
   - `/recommend`
+## Day 5 to Day 8 — FastAPI Backend + Structured Recommendation Output
+
+### Goal
+Convert ML + RAG scripts into a working backend API that can be tested using Swagger UI.
+
+---
+
+### Work Done
+
+#### 1) Built FastAPI backend
+Created `api/` package and implemented endpoints:
+- `POST /predict` → churn prediction
+- `POST /ask` → retrieve top-k document chunks from FAISS
+- `POST /recommend` → churn prediction + retention policy recommendation with citations
+
+Swagger UI available at:
+- `/docs`
+
+---
+
+#### 2) Improved recommendation output (structured JSON)
+Earlier `/recommend` returned raw policy chunks.
+To make it production/demo-ready, created an action parser:
+
+- Created: `rag/action_parser.py`
+- Implemented: `parse_policy_actions()`
+
+Now `/recommend` returns:
+- `message` (human-friendly summary based on risk)
+- `actions` list (structured format)
+  - action title
+  - details
+  - eligibility
+- `sources` (pdf + page citations)
+
+Example fields:
+```json
+"actions": [
+  {"title": "Offer RET10 Discount", "details": "...", "eligibility": "..."},
+  {"title": "Plan Upgrade Offer", "details": "...", "eligibility": "..."}
+]
 

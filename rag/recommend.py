@@ -169,7 +169,7 @@ def main():
     results = [r for r in results if r["source"] == "RetentionPolicy.pdf"]
 
     if not results:
-        print("\n❌ No relevant retention policy chunks found.")
+        print("\n No relevant retention policy chunks found.")
         print("Tip: ensure RetentionPolicy.pdf is indexed and exists in docs/ folder.")
         return
 
