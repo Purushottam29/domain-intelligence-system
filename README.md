@@ -144,8 +144,7 @@ X-API-Key: puru123
 ```
 Without this key:
 - returns 401 Unauthorized
-![API_Key_Authentication]()
-
+![API_Key_Authentication](https://github.com/Purushottam29/domain-intelligence-system/blob/a619cd0cfb2ce05dc74c4940b9faea452ee51784/assets/API_authenticate.png)
 
 ## API Endpoints
 
