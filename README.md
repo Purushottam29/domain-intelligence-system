@@ -249,7 +249,6 @@ tail -n 50 logs/api.log
 - Improve action parser to support multi policy action reasoning
 
 ## Author
-Purushottam Choudhar## Author
 ### Purushottam Choudhary
 B.Tech Computer Science
 * Github: https://github.com/Purushottam29
