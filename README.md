@@ -98,7 +98,7 @@ pip install -r requirements.txt
 python ml/baseline_logreg.py
 ```
 Note: Model will be saved inside model directory along with the scores
-![Ouput1]()
+![Ouput1](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/logistic_regression_output.png)
 Saved model:
 - models/churn_model.joblib
 
@@ -108,7 +108,7 @@ python ml/random_forest.py
 ```
 Note: No model will be saved only the scores will be shown
 ```
-![Output2]()
+![Output2](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Random_Forest_Output.png)
 
 ### 4) Build RAG Index (FAISS)
 Place PDFs inside docs/ then run
@@ -144,6 +144,8 @@ X-API-Key: puru123
 ```
 Without this key:
 - returns 401 Unauthorized
+![API_Key_Authentication]()
+
 
 ## API Endpoints
 
@@ -193,8 +195,8 @@ Sample Input:
   "CLTV": 6000.0
 }
 ```
-![Predict Input]()
-![Predict Output]()
+![Predict Input](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Predict_Input.png)
+![Predict Output](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Predict_Input.png)
 
 ### 2) POST/ask
 Ask a question from the policy documents.
@@ -203,8 +205,8 @@ Input:
 { "question": "What is the refund timeline?", "top_k": 5 }
 ```
 Output: top chunks + citations
-![Ask Input]()
-![Ask Output]()
+![Ask Input](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Ask_Input.png)
+![Ask Output](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/ask_output.png)
 
 
 ### 3) POST/recommend
@@ -216,9 +218,9 @@ Output Includes:
 - message
 - action list(structured)
 - sources
-![Recommend Input]()
-![Recommend Output]()
-
+![Recommend Input](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Recommend_Input.png)
+![Recommend Output](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Recommend_Output.png)
+![Recommend Output Terminal](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/Recommend_terminal.png)
 ## Logs
 Logs stored at:
 ```bash
@@ -228,8 +230,7 @@ View logs:
 ```bash
 tail -n 50 logs/api.log
 ```
-![Logs]()
-
+![Logs](https://github.com/Purushottam29/domain-intelligence-system/blob/bafd8aca88736d9426deff870c6aa27b7b095dee/assets/logs.png)
 
 ## Current Status:
 - ML churn prediction pipeline
