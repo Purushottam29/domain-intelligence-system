@@ -158,7 +158,7 @@ def recommend_service(customer: Dict[str, Any]) -> Dict[str, Any]:
     if risk=="low":
         message = "Low churn risk. No discount offer required. Maintain engagement and loyalty benefits."
     elif risk == "medium":
-        messgae = "Medium churn risk. Recommend light retentionactions like RET5 discount + service quality check."
+        message = "Medium churn risk. Recommend light retentionactions like RET5 discount + service quality check."
     else:
         message = "High churn risk. Apply immediate retention actions (RET10, upgrade offers, premium support, escalation)"
 
